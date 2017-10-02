@@ -1,6 +1,9 @@
 # news-data
 Logs Analysis Project for Udacity's Full Stack Web Developer Nanodegree
 
+Run Queries:
+psql -d news -f news-data/queries.sql
+
 This project will answer:
 
 1. What are the most popular three articles of all time? Which articles have been accessed the most? Present this information as a sorted list with the most popular article at the top.
