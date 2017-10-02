@@ -1,0 +1,2 @@
+SELECT author
+FROM articles;
