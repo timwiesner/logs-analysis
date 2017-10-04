@@ -5,7 +5,7 @@ import psycopg2
 DBNAME = "news"
 
 
-def get_posts():
+def query_one():
     """Return relevant queries from the database."""
     conn = psycopg2.connect(database=DBNAME)
     cur = conn.cursor()
@@ -18,4 +18,4 @@ def get_posts():
     cur.close()
     conn.close()
 
-get_posts()
+query_one()
