@@ -14,7 +14,7 @@ def query_one():
         WHERE path LIKE '/article/%' \
         GROUP BY path \
         ORDER BY count DESC \
-        LIMIT 3;")
+        LIMIT 3")
     rows = cur.fetchall()
     print("Top Three Articles:")
     for row in rows:
