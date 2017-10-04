@@ -9,12 +9,19 @@ def query_one():
     """Return relevant queries from the database."""
     conn = psycopg2.connect(database=DBNAME)
     cur = conn.cursor()
-    cur.execute("SELECT SUBSTRING(path, 10), COUNT(*) \
-        FROM log \
-        WHERE path LIKE '/article/%' \
-        GROUP BY path \
-        ORDER BY count DESC \
-        LIMIT 3")
+    # cur.execute("SELECT SUBSTRING(path, 10), COUNT(*) \
+    #     FROM log \
+    #     WHERE path LIKE '/article/%' \
+    #     GROUP BY path \
+    #     ORDER BY count DESC \
+    #     LIMIT 3")
+    cur.execute("SELECT \
+                    topthree.substring, \
+                    topthree.count, \
+                    articles.title \
+                FROM topthree \
+                JOIN articles \
+                    ON topthree.substring = articles.slug;")
     rows = cur.fetchall()
     print("Top Three Articles:")
     for row in rows:
