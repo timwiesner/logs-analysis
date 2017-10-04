@@ -17,6 +17,5 @@ def get_posts():
         print(row)
     cur.close()
     conn.close()
-    # return rows
 
 get_posts()
