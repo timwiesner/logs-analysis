@@ -4,11 +4,19 @@ import psycopg2
 
 DBNAME = "news"
 
+
 def get_posts():
-	"""Return relevant queries from the database."""
-  db = psycopg2.connect(database=DBNAME)
-  c = db.cursor()
-  c.execute("select title, name from articles join authors on articles.author = authors.id")
-  posts = c.fetchall()
-  db.close()
-  return posts
+    """Return relevant queries from the database."""
+    conn = psycopg2.connect(database=DBNAME)
+    cur = conn.cursor()
+    cur.execute("select title, name from articles \
+        join authors on articles.author = authors.id")
+    rows = cur.fetchall()
+    print("Show me the databases: ", cur.rowcount)
+    for row in rows:
+        print(row)
+    cur.close()
+    conn.close()
+    # return rows
+
+get_posts()
