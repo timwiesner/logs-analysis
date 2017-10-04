@@ -5,7 +5,7 @@ import psycopg2
 DBNAME = "news"
 
 
-def topthree_view():
+def top_view():
     """Return relevant queries from the database."""
     conn = psycopg2.connect(database=DBNAME)
     cur = conn.cursor()
@@ -21,4 +21,4 @@ def topthree_view():
     cur.close()
     conn.close()
 
-topthree_view()
+top_view()
