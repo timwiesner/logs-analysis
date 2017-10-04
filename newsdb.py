@@ -16,12 +16,12 @@ def query_one():
     #     ORDER BY count DESC \
     #     LIMIT 3")
     cur.execute("SELECT \
-                    topthree.substring, \
-                    topthree.count, \
-                    articles.title \
+                    articles.title, \
+                    topthree.count \
                 FROM topthree \
                 JOIN articles \
-                    ON topthree.substring = articles.slug;")
+                    ON topthree.substring = articles.slug \
+                ORDER BY count DESC")
     rows = cur.fetchall()
     print("Top Three Articles:")
     for row in rows:
