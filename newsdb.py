@@ -9,8 +9,12 @@ def query_one():
     """Return relevant queries from the database."""
     conn = psycopg2.connect(database=DBNAME)
     cur = conn.cursor()
-    cur.execute("select title, name from articles \
-        join authors on articles.author = authors.id")
+    cur.execute("SELECT SUBSTRING(path, 10), COUNT(*) \
+        FROM log \
+        WHERE path LIKE '/article/%' \
+        GROUP BY path \
+        ORDER BY count DESC \
+        LIMIT 3;")
     rows = cur.fetchall()
     print("Show me the databases: ", cur.rowcount)
     for row in rows:
