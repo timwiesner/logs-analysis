@@ -2,12 +2,10 @@
 
 import psycopg2
 
-DBNAME = "news"
-
 
 def top_view():
     """Return relevant queries from the database."""
-    conn = psycopg2.connect(database=DBNAME)
+    conn = psycopg2.connect(database="news")
     cur = conn.cursor()
     cur.execute(
         "CREATE VIEW topthree AS \

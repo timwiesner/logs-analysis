@@ -2,12 +2,10 @@
 
 import psycopg2
 
-DBNAME = "news"
-
 
 def query_one():
     """Return relevant queries from the database."""
-    conn = psycopg2.connect(database=DBNAME)
+    conn = psycopg2.connect(database="news")
     cur = conn.cursor()
     cur.execute("SELECT \
                  articles.title, \
