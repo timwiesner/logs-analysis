@@ -16,7 +16,7 @@ def query_one():
         ORDER BY count DESC \
         LIMIT 3;")
     rows = cur.fetchall()
-    print("Show me the databases: ", cur.rowcount)
+    print("Top Three Articles:")
     for row in rows:
         print(row)
     cur.close()
