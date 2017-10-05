@@ -19,3 +19,19 @@ def leaderboard():
     conn.close()
 
 leaderboard()
+
+
+def popularity():
+    """Return relevant queries from the database."""
+    conn = psycopg2.connect(database="news")
+    cur = conn.cursor()
+    cur.execute("CREATE VIEW most_popular AS \
+                 SELECT articles.author, articles.title, most_accessed.count \
+                 FROM most_accessed \
+                 RIGHT JOIN articles \
+                    ON most_accessed.substring = articles.slug")
+    conn.commit()
+    cur.close()
+    conn.close()
+
+popularity()
