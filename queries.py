@@ -28,12 +28,13 @@ def query_two():
     """Return most popular article authors."""
     conn = psycopg2.connect(database="news")
     cur = conn.cursor()
-    cur.execute("SELECT authors.name, SUM(most_popular.count) \
+    cur.execute("SELECT CONCAT \
+                    (authors.name, ' - ', SUM(most_popular.count), ' views') \
                  FROM most_popular \
                  RIGHT JOIN authors \
                     ON most_popular.author = authors.id \
-                 GROUP BY authors.name \
-                 ORDER BY sum DESC")
+                GROUP BY authors.name \
+                ORDER BY SUM(most_popular.count) DESC;")
     rows = cur.fetchall()
     print("Most Popular Article Authors:")
     for row in rows:
