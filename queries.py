@@ -31,7 +31,8 @@ def query_two():
     cur.execute("SELECT authors.name, articles.title \
                  FROM authors \
                  LEFT JOIN articles \
-                    ON authors.id = articles.author")
+                    ON authors.id = articles.author \
+                 ORDER BY articles.author")
     rows = cur.fetchall()
     print("Top Three Articles:")
     for row in rows:
