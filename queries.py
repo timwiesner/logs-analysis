@@ -4,7 +4,7 @@ import psycopg2
 
 
 def query_one():
-    """Return relevant queries from the database."""
+    """Return top three accessed articles from the database."""
     conn = psycopg2.connect(database="news")
     cur = conn.cursor()
     cur.execute("SELECT \
@@ -21,5 +21,10 @@ def query_one():
         print(row)
     cur.close()
     conn.close()
+
+
+
+
+
 
 query_one()
