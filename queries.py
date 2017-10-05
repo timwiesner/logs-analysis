@@ -8,7 +8,7 @@ def query_one():
     conn = psycopg2.connect(database="news")
     cur = conn.cursor()
     cur.execute("SELECT \
-                    articles.title, \
+                    initcap(articles.title), \
                     most_accessed.count \
                  FROM most_accessed \
                  JOIN articles \
