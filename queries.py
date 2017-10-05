@@ -25,7 +25,7 @@ def query_one():
 
 
 def query_two():
-    """Return top three accessed articles from the database."""
+    """Return most popular article authors."""
     conn = psycopg2.connect(database="news")
     cur = conn.cursor()
     cur.execute("SELECT authors.name, articles.title \
@@ -34,15 +34,12 @@ def query_two():
                     ON authors.id = articles.author \
                  ORDER BY articles.author")
     rows = cur.fetchall()
-    print("Top Three Articles:")
+    print("Most Popular Article Authors:")
     for row in rows:
         print(row)
     cur.close()
     print('\n')
     conn.close()
-
-
-
 
 
 
