@@ -8,13 +8,12 @@ def top_view():
     conn = psycopg2.connect(database="news")
     cur = conn.cursor()
     cur.execute(
-        "CREATE VIEW topthree AS \
+        "CREATE VIEW most_accessed AS \
          SELECT SUBSTRING(path, 10), COUNT(*) \
          FROM log \
          WHERE path LIKE '/article/%' \
          GROUP BY path \
-         ORDER BY count DESC \
-         LIMIT 3")
+         ORDER BY count DESC;")
     rows = cur.fetchall()
     cur.close()
     conn.close()
