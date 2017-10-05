@@ -20,7 +20,4 @@ This project will answer:
 
 
 3. On which days did more than 1% of requests lead to errors? The log table includes a column status that indicates the HTTP status code that the news site sent to the user's browser. (Refer back to this lesson if you want to review the idea of HTTP status codes.)
-*  Ursula La Multa — 2304 views
-*  Rudolf von Treppenwitz — 1985 views
-*  Markoff Chaney — 1723 views
-*  Anonymous Contributor — 1023 views
+*  July 29, 2016 — 2.5% errors
