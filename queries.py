@@ -8,8 +8,8 @@ def query_one():
     conn = psycopg2.connect(database="news")
     cur = conn.cursor()
     cur.execute("SELECT \
-                    initcap(articles.title), \
-                    most_accessed.count \
+                    CONCAT(initcap(articles.title), ' - ', \
+                    most_accessed.count, ' views') AS views \
                  FROM most_accessed \
                  JOIN articles \
                  ON most_accessed.substring = articles.slug \
@@ -21,10 +21,5 @@ def query_one():
         print(row)
     cur.close()
     conn.close()
-
-
-
-
-
 
 query_one()
