@@ -45,14 +45,15 @@ def query_two():
 
 
 def query_three():
-    """Return most popular article authors."""
+    """Return days where more than 1% of requests lead to errors."""
     conn = psycopg2.connect(database="news")
     cur = conn.cursor()
-    cur.execute("SELECT date_trunc('day', time), COUNT(*) \
+    cur.execute("SELECT \
+                 CONCAT(date_trunc('day', time), ' - ', COUNT(*), ' requests') \
                  FROM log \
                  GROUP BY date_trunc('day', time)")
     rows = cur.fetchall()
-    print("Most Popular Article Authors:")
+    print("Requests:")
     for row in rows:
         print(row)
     cur.close()
