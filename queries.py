@@ -28,10 +28,13 @@ def query_two():
     """Return most popular article authors."""
     conn = psycopg2.connect(database="news")
     cur = conn.cursor()
-    cur.execute("SELECT articles.author, articles.title, most_accessed.count \
-                 FROM most_accessed \
-                 RIGHT JOIN articles \
-                    ON most_accessed.substring = articles.slug;")
+    cur.execute("SELECT \
+                    authors.name, \
+                    most_popular.title, \
+                    most_popular.count \
+                 FROM most_popular \
+                 RIGHT JOIN authors \
+                    ON most_popular.author = authors.id")
     rows = cur.fetchall()
     print("Most Popular Article Authors:")
     for row in rows:
