@@ -44,9 +44,24 @@ def query_two():
     conn.close()
 
 
+def query_three():
+    """Return most popular article authors."""
+    conn = psycopg2.connect(database="news")
+    cur = conn.cursor()
+    cur.execute("SELECT date_trunc('day', time), COUNT(*) \
+                 FROM log \
+                 GROUP BY date_trunc('day', time)")
+    rows = cur.fetchall()
+    print("Most Popular Article Authors:")
+    for row in rows:
+        print(row)
+    cur.close()
+    print('\n')
+    conn.close()
 
 
 print('\n')
 
 query_one()
 query_two()
+query_three()
