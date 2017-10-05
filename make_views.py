@@ -14,7 +14,7 @@ def leaderboard():
          WHERE path LIKE '/article/%' \
          GROUP BY path \
          ORDER BY count DESC;")
-    rows = cur.fetchall()
+    conn.commit()
     cur.close()
     conn.close()
 
