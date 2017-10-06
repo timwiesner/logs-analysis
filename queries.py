@@ -52,10 +52,10 @@ def query_three():
     cur = conn.cursor()
     cur.execute(
         "SELECT \
-            CONCAT(to_char(time, 'MM-DD-YYYY'), ' - ', status, ': ', \
-                COUNT(*), ' requests') \
+            CONCAT(to_char(time, 'MM-DD-YY'), ' - ', status, ': ', \
+                COUNT(*)) \
         FROM log \
-        GROUP BY to_char(time, 'MM-DD-YYYY'), status")
+        GROUP BY to_char(time, 'MM-DD-YY'), status")
     rows = cur.fetchall()
     print("Requests:")
     for row in rows:
@@ -69,4 +69,4 @@ print('\n')
 
 query_one()
 query_two()
-# query_three()
+query_three()
