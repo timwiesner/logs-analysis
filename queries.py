@@ -15,7 +15,7 @@ def query_one():
     #              ON most_accessed.substring = articles.slug \
     #              ORDER BY count DESC \
     #              LIMIT 3")
-    cur.execute("SELECT CONCAT(initcap(articles.title), ' - ', count(*), ' views') FROM log JOIN articles ON substring(path, 10) = articles.slug GROUP BY articles.title LIMIT 3")
+    cur.execute("SELECT CONCAT(initcap(articles.title), ' - ', count(*), ' views') FROM log JOIN articles ON substring(path, 10) = articles.slug GROUP BY articles.title ORDER BY log.count DESC LIMIT 3")
     rows = cur.fetchall()
     print("Top Three Articles:")
     for row in rows:
