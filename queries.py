@@ -48,10 +48,8 @@ def query_three():
     """Return days where more than 1% of requests lead to errors."""
     conn = psycopg2.connect(database="news")
     cur = conn.cursor()
-    cur.execute("SELECT \
-                 CONCAT(date_trunc('day', time), ' - ', status, ':', COUNT(*), ' requests') \
-                 FROM log \
-                 GROUP BY date_trunc('day', time), status")
+    cur.execute("SELECT CONCAT(to_char(time, 'MM-DD-YYYY'), ' - ', status, ':', COUNT(*), ' requests') FROM log GROUP BY to_char(time, 'MM-DD-YYYY'), status")
+    # cur.execute("SELECT to_char(time, 'MM-DD-YYYY') AS day, status, COUNT(*) FROM log GROUP BY day, status")
     rows = cur.fetchall()
     print("Requests:")
     for row in rows:
