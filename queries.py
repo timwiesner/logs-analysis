@@ -13,7 +13,9 @@ def query_one():
         FROM log \
         RIGHT JOIN articles \
             ON substring(path, 10) = articles.slug \
-            GROUP BY articles.title ORDER BY log.count DESC LIMIT 3")
+        GROUP BY articles.title \
+        ORDER BY log.count DESC \
+        LIMIT 3")
     rows = cur.fetchall()
     print("Top Three Articles:")
     for row in rows:
@@ -28,7 +30,8 @@ def query_two():
     conn = psycopg2.connect(database="news")
     cur = conn.cursor()
     cur.execute(
-        "SELECT CONCAT(authors.name, ' - ', SUM(most_accessed.count), ' views') \
+        "SELECT \
+            CONCAT(authors.name, ' - ', SUM(most_accessed.count), ' views') \
         FROM most_accessed \
         JOIN authors \
             ON most_accessed.author = authors.id \
