@@ -49,9 +49,9 @@ def query_three():
     conn = psycopg2.connect(database="news")
     cur = conn.cursor()
     cur.execute("SELECT \
-                 CONCAT(date_trunc('day', time), ' - ', COUNT(*), ' requests') \
+                 CONCAT(date_trunc('day', time), ' - ', status, ':', COUNT(*), ' requests') \
                  FROM log \
-                 GROUP BY date_trunc('day', time)")
+                 GROUP BY date_trunc('day', time), status")
     rows = cur.fetchall()
     print("Requests:")
     for row in rows:
