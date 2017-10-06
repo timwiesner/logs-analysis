@@ -28,7 +28,7 @@ def query_two():
     conn = psycopg2.connect(database="news")
     cur = conn.cursor()
     cur.execute(
-        "SELECT authors.name, SUM(most_accessed.count) \
+        "SELECT CONCAT(authors.name, ' - ', SUM(most_accessed.count), ' views') \
         FROM most_accessed \
         JOIN authors \
             ON most_accessed.author = authors.id \
