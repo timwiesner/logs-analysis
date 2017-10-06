@@ -9,11 +9,12 @@ def leaderboard():
     cur = conn.cursor()
     cur.execute(
         "CREATE VIEW most_accessed AS \
-         SELECT SUBSTRING(path, 10), COUNT(*) \
-         FROM log \
-         WHERE path LIKE '/article/%' \
-         GROUP BY path \
-         ORDER BY count DESC;")
+        SELECT articles.author, count(*) \
+        FROM log \
+        RIGHT JOIN articles \
+            ON substring(path, 10) = articles.slug \
+        GROUP BY articles.author \
+        ORDER BY log.count DESC")
     conn.commit()
     cur.close()
     conn.close()
