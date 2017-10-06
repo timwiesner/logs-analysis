@@ -3,7 +3,7 @@
 import psycopg2
 
 
-def leaderboard():
+def most_accessed():
     """Return relevant queries from the database."""
     conn = psycopg2.connect(database="news")
     cur = conn.cursor()
@@ -19,4 +19,4 @@ def leaderboard():
     cur.close()
     conn.close()
 
-leaderboard()
+most_accessed()
