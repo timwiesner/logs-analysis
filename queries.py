@@ -7,14 +7,15 @@ def query_one():
     """Return top three accessed articles from the database."""
     conn = psycopg2.connect(database="news")
     cur = conn.cursor()
-    cur.execute("SELECT \
-                    CONCAT(initcap(articles.title), ' - ', \
-                    most_accessed.count, ' views') AS views \
-                 FROM most_accessed \
-                 JOIN articles \
-                 ON most_accessed.substring = articles.slug \
-                 ORDER BY count DESC \
-                 LIMIT 3")
+    # cur.execute("SELECT \
+    #                 CONCAT(initcap(articles.title), ' - ', \
+    #                 most_accessed.count, ' views') AS views \
+    #              FROM most_accessed \
+    #              JOIN articles \
+    #              ON most_accessed.substring = articles.slug \
+    #              ORDER BY count DESC \
+    #              LIMIT 3")
+    cur.execute("SELECT articles.title, count(*) FROM log JOIN articles ON substring(path, 10) = articles.slug GROUP BY articles.title ORDER BY count desc")
     rows = cur.fetchall()
     print("Top Three Articles:")
     for row in rows:
@@ -48,8 +49,7 @@ def query_three():
     """Return days where more than 1% of requests lead to errors."""
     conn = psycopg2.connect(database="news")
     cur = conn.cursor()
-    cur.execute("SELECT CONCAT(to_char(time, 'MM-DD-YYYY'), ' - ', status, ':', COUNT(*), ' requests') FROM log GROUP BY to_char(time, 'MM-DD-YYYY'), status")
-    # cur.execute("SELECT to_char(time, 'MM-DD-YYYY') AS day, status, COUNT(*) FROM log GROUP BY day, status")
+    cur.execute("SELECT CONCAT(to_char(time, 'MM-DD-YYYY'), ' - ', status, ': ', COUNT(*), ' requests') FROM log GROUP BY to_char(time, 'MM-DD-YYYY'), status")
     rows = cur.fetchall()
     print("Requests:")
     for row in rows:
@@ -62,5 +62,5 @@ def query_three():
 print('\n')
 
 query_one()
-query_two()
-query_three()
+# query_two()
+# query_three()
