@@ -50,12 +50,15 @@ def query_three():
     """Return days where more than 1% of requests lead to errors."""
     conn = psycopg2.connect(database="news")
     cur = conn.cursor()
-    cur.execute(
-        "SELECT \
-            CONCAT(to_char(time, 'MM-DD-YY'), ' - ', status, ': ', \
-                COUNT(*)) \
-        FROM log \
-        GROUP BY to_char(time, 'MM-DD-YY'), status")
+    cur.execute(" \
+        SELECT \
+            success_requests.date, \
+            success_requests.ok, \
+            failed_requests.err \
+        FROM success_requests \
+        JOIN failed_requests \
+            ON success_requests.date = failed_requests.date \
+        WHERE (failed_requests.err * 100) > success_requests.ok")
     rows = cur.fetchall()
     print("Requests:")
     for row in rows:
