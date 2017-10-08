@@ -40,3 +40,23 @@ def failed_requests():
     conn.close()
 
 failed_requests()
+
+
+def success_requests():
+    """Return '200 OK' requests from the database."""
+    conn = psycopg2.connect(database="news")
+    cur = conn.cursor()
+    cur.execute(
+        "CREATE VIEW success_requests AS \
+        SELECT \
+            to_char(time, 'Month, DD YYYY') AS date, \
+            COUNT(*) as ok \
+        FROM log \
+        WHERE status like '200 OK' \
+        GROUP BY date \
+        ORDER BY date;")
+    conn.commit()
+    cur.close()
+    conn.close()
+
+success_requests()
