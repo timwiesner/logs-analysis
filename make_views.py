@@ -4,7 +4,7 @@ import psycopg2
 
 
 def most_accessed():
-    """Return relevant queries from the database."""
+    """Return most accessed articles from the database."""
     conn = psycopg2.connect(database="news")
     cur = conn.cursor()
     cur.execute(
@@ -20,3 +20,23 @@ def most_accessed():
     conn.close()
 
 most_accessed()
+
+
+def failed_requests():
+    """Return '404 NOT FOUND' requests from the database."""
+    conn = psycopg2.connect(database="news")
+    cur = conn.cursor()
+    cur.execute(
+        "CREATE VIEW failed_requests AS \
+        SELECT \
+            to_char(time, 'Month, DD YYYY') AS date, \
+            COUNT(*) as err \
+        FROM log \
+        WHERE status like '404 NOT FOUND' \
+        GROUP BY date \
+        ORDER BY date")
+    conn.commit()
+    cur.close()
+    conn.close()
+
+failed_requests()
