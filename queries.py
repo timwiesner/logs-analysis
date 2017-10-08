@@ -50,8 +50,8 @@ def query_three():
     """Return days where more than 1% of requests lead to errors."""
     conn = psycopg2.connect(database="news")
     cur = conn.cursor()
-    cur.execute(" \
-        SELECT \
+    cur.execute(
+        "SELECT \
             success_requests.date, \
             success_requests.ok, \
             failed_requests.err \
