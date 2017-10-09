@@ -17,7 +17,7 @@ def query_one():
         ORDER BY log.count DESC \
         LIMIT 3")
     rows = cur.fetchall()
-    print("Top Three Articles:")
+    print("\nTop Three Articles:")
     for row in rows:
         print(row)
     cur.close()
@@ -37,7 +37,7 @@ def query_two():
         GROUP BY authors.name \
         ORDER BY SUM(most_accessed.count) DESC")
     rows = cur.fetchall()
-    print("Most Popular Article Authors:")
+    print("\nMost Popular Article Authors:")
     for row in rows:
         print(row)
     cur.close()
@@ -61,7 +61,7 @@ def query_three():
             ON success_requests.date = failed_requests.date \
         WHERE (failed_requests.err * 100) > success_requests.ok")
     rows = cur.fetchall()
-    print("Requests:")
+    print("\nRequests:")
     for row in rows:
         print(row)
     cur.close()
@@ -69,11 +69,7 @@ def query_three():
 
 
 
-
-print('\n')
 query_one()
-print('\n')
 query_two()
-print('\n')
 query_three()
 print('\n')
