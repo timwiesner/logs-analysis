@@ -29,7 +29,7 @@ def failed_requests():
     cur.execute(
         "CREATE VIEW failed_requests AS \
         SELECT \
-            to_char(time, 'Month, DD YYYY') AS date, \
+            to_char(time, 'FMMonth, DD YYYY') AS date, \
             COUNT(*) as err \
         FROM log \
         WHERE status like '404 NOT FOUND' \
@@ -49,7 +49,7 @@ def success_requests():
     cur.execute(
         "CREATE VIEW success_requests AS \
         SELECT \
-            to_char(time, 'Month, DD YYYY') AS date, \
+            to_char(time, 'FMMonth, DD YYYY') AS date, \
             COUNT(*) as ok \
         FROM log \
         WHERE status like '200 OK' \
