@@ -53,8 +53,7 @@ def query_three():
     cur.execute(
         "SELECT \
             success_requests.date, \
-            success_requests.ok, \
-            failed_requests.err \
+            failed_requests.err / success_requests.ok::float \
         FROM success_requests \
         JOIN failed_requests \
             ON success_requests.date = failed_requests.date \
