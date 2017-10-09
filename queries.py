@@ -21,7 +21,6 @@ def query_one():
     for row in rows:
         print(row)
     cur.close()
-    print('\n')
     conn.close()
 
 
@@ -42,7 +41,6 @@ def query_two():
     for row in rows:
         print(row)
     cur.close()
-    print('\n')
     conn.close()
 
 
@@ -67,12 +65,15 @@ def query_three():
     for row in rows:
         print(row)
     cur.close()
-    print('\n')
     conn.close()
 
 
-print('\n')
 
+
+print('\n')
 query_one()
+print('\n')
 query_two()
+print('\n')
 query_three()
+print('\n')
