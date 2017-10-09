@@ -54,7 +54,7 @@ def success_requests():
         FROM log \
         WHERE status like '200 OK' \
         GROUP BY date \
-        ORDER BY date;")
+        ORDER BY date")
     conn.commit()
     cur.close()
     conn.close()
