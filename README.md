@@ -21,19 +21,14 @@ To run these queries, the following programs must be installed:
 1. Download and unzip [newsdata.zip](https://d17h27t6h515a5.cloudfront.net/topher/2016/August/57b5f748_newsdata/newsdata.zip).
 2. Place `newsdata.sql` inside the `vagrant` directory. This directory can be found in the virtual machine installed in the previous step.
 
-### Start Virtual Machine
-To run the virtual machine, `cd` into the `vagrant` directory and enter the following commands:
-1. vagrant up
-2. vagrant ssh
-3. cd /vagrant
+### Start Virtual Machine and Load Data
+To run the VM and load SQL data, `cd` into the `vagrant` directory and enter the following commands:
+* `vagrant up`
+* `vagrant ssh`
+* `cd /vagrant`
+* `psql -d news -f newsdata.sql`
 
-### Load Data
-
-
-Run Queries:
-psql -d news -f newsdata.sql
-
-psql — the PostgreSQL command line program
+<!-- psql — the PostgreSQL command line program
 -d news — connect to the database named news which has been set up for you
 -f newsdata.sql — run the SQL statements in the file newsdata.sql
-Running this command will connect to your installed database server and execute the SQL commands in the downloaded file, creating tables and populating them with data.
+Running this command will connect to your installed database server and execute the SQL commands in the downloaded file, creating tables and populating them with data. -->
