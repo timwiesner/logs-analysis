@@ -15,7 +15,7 @@ To run these queries, the following programs must be installed:
 * Vagrant https://www.vagrantup.com/downloads.html
 
 ### Virtual Machine Configuration
-Download and unzip https://d17h27t6h515a5.cloudfront.net/topher/2017/August/59822701_fsnd-virtual-machine/fsnd-virtual-machine.zip
+* Download and unzip [the vm config file](https://d17h27t6h515a5.cloudfront.net/topher/2017/August/59822701_fsnd-virtual-machine/fsnd-virtual-machine.zip)
 
 ### Download Data
 1. Download and unzip [Udacity's Vagrant Configuration File](https://d17h27t6h515a5.cloudfront.net/topher/2016/August/57b5f748_newsdata/newsdata.zip)
