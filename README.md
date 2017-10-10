@@ -18,7 +18,7 @@ To run these queries, the following programs must be installed:
 Download and unzip https://d17h27t6h515a5.cloudfront.net/topher/2017/August/59822701_fsnd-virtual-machine/fsnd-virtual-machine.zip
 
 ### Download Data
-1. Download and unzip https://d17h27t6h515a5.cloudfront.net/topher/2016/August/57b5f748_newsdata/newsdata.zip
+1. Download and unzip [Udacity's Vagrant Configuration File](https://d17h27t6h515a5.cloudfront.net/topher/2016/August/57b5f748_newsdata/newsdata.zip)
 2. Place this file inside the `vagrant` directory shared with the virtual machine installed in the previous step
 
 ### Start Virtual Machine
