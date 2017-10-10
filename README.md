@@ -1,8 +1,8 @@
 # Udacity Full Stack Web Developer Nanodegree
 
-##Logs Analysis Project
+## Logs Analysis Project
 
-###Project Overview
+### Project Overview
 This project uses psycopg2 as a PostgreSQL adapter for Python to run queries against a fictional news website database. These queries answer:
 1. What are the most popular three articles of all time?
 2. Who are the most popular article authors of all time?
