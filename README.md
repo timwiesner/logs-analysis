@@ -22,6 +22,14 @@ To run these queries, the following programs must be installed:
 2. Place `newsdata.sql` inside the `vagrant` directory. This directory can be found in the virtual machine installed in the previous step.
 
 ### Start Virtual Machine
+To run the virtual machine:
+* `cd` into the `vagrant` directory
+* Enter the following commands
+1. vagrant up
+2. vagrant ssh
+3. cd /vagrant
+
+### Load Data
 
 
 Run Queries:
