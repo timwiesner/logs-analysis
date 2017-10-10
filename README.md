@@ -10,16 +10,16 @@ This project uses Python with psycopg2 as a PostgreSQL adapter to run queries ag
 
 ### Installation Prerequisites
 To run these queries, the following programs must be installed:
-* Python 3 https://www.python.org/downloads/
-* Virtual Box https://www.virtualbox.org/wiki/Downloads
-* Vagrant https://www.vagrantup.com/downloads.html
+* Python3: https://www.python.org/downloads/
+* Virtual: Box https://www.virtualbox.org/wiki/Downloads
+* Vagrant: https://www.vagrantup.com/downloads.html
 
 ### Virtual Machine Configuration
-* Download and unzip [the vm config file](https://d17h27t6h515a5.cloudfront.net/topher/2017/August/59822701_fsnd-virtual-machine/fsnd-virtual-machine.zip)
+* Download and unzip [Udacity's Vagrant Configuration File](https://d17h27t6h515a5.cloudfront.net/topher/2017/August/59822701_fsnd-virtual-machine/fsnd-virtual-machine.zip).
 
 ### Download Data
-1. Download and unzip [Udacity's Vagrant Configuration File](https://d17h27t6h515a5.cloudfront.net/topher/2016/August/57b5f748_newsdata/newsdata.zip)
-2. Place this file inside the `vagrant` directory shared with the virtual machine installed in the previous step
+1. Download and unzip [newsdata.zip](https://d17h27t6h515a5.cloudfront.net/topher/2016/August/57b5f748_newsdata/newsdata.zip).
+2. Place `newsdata.sql` inside the `vagrant` directory. This directory can be found in the virtual machine installed in the previous step.
 
 ### Start Virtual Machine
 
