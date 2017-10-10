@@ -17,12 +17,11 @@ def query_one():
         ORDER BY log.count DESC \
         LIMIT 3")
     rows = cur.fetchall()
-    # print("\nTop Three Articles:")
+    text_file = open('query_results.txt', 'w')
+    text_file.write('Top Three Articles:')
     for row in rows:
-        text_file = open('query_results.txt', 'w')
-        text_file.write("Top Three Articles: {}\n".format(row))
-        text_file.close()
-        # print(row)
+        text_file.write('\n {}'.format(row))
+    text_file.close()
     cur.close()
     conn.close()
 
@@ -75,4 +74,3 @@ def query_three():
 query_one()
 # query_two()
 # query_three()
-print('\n')
