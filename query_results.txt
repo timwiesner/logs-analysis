@@ -1,9 +1,9 @@
-Top Three Articles:
+Most Popular Articles:
  ('Candidate Is Jerk, Alleges Rival - 338647 views',)
  ('Bears Love Berries, Alleges Bear - 253801 views',)
  ('Bad Things Gone, Say Good People - 170098 views',)
  
-Most Popular Article Authors:
+Most Popular Authors:
  ('Ursula La Multa - 507594 views',)
  ('Rudolf von Treppenwitz - 423457 views',)
  ('Anonymous Contributor - 170098 views',)

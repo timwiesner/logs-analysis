@@ -3,6 +3,16 @@
 import psycopg2
 
 
+
+def select(select_query):
+    conn = psycopg2.connect(database="news")
+    cur = conn.cursor()
+    cur.execute(select_query)
+    rows = cur.fetchall()
+    conn.close()
+    return rows
+
+
 def query_one():
     """Return top three accessed articles from the database."""
     conn = psycopg2.connect(database="news")
