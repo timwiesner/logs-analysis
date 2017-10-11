@@ -17,7 +17,7 @@ def query_one():
         ORDER BY log.count DESC \
         LIMIT 3")
     rows = cur.fetchall()
-    text_file = open('query_results.txt', 'w')
+    text_file = open('query_results.txt', 'a')
     text_file.write('Top Three Articles:')
     for row in rows:
         text_file.write('\n {}'.format(row))
@@ -39,9 +39,11 @@ def query_two():
         GROUP BY authors.name \
         ORDER BY SUM(most_accessed.count) DESC")
     rows = cur.fetchall()
-    print("\nMost Popular Article Authors:")
+    text_file = open('query_results.txt', 'a')
+    text_file.write('Most Popular Article Authors:')
     for row in rows:
-        print(row)
+        text_file.write('\n {}'.format(row))
+    text_file.close()
     cur.close()
     conn.close()
 
@@ -63,14 +65,16 @@ def query_three():
             ON success_requests.date = failed_requests.date \
         WHERE (failed_requests.err * 100) > success_requests.ok")
     rows = cur.fetchall()
-    print("\nRequests:")
+    text_file = open('query_results.txt', 'a')
+    text_file.write('Requests:')
     for row in rows:
-        print(row)
+        text_file.write('\n {}'.format(row))
+    text_file.close()
     cur.close()
     conn.close()
 
 
 
 query_one()
-# query_two()
-# query_three()
+query_two()
+query_three()
