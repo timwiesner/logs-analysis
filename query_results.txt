@@ -3,11 +3,11 @@ Top Three Articles:
  ('Bears Love Berries, Alleges Bear - 253801 views',)
  ('Bad Things Gone, Say Good People - 170098 views',)
  
- Most Popular Article Authors:
+Most Popular Article Authors:
  ('Ursula La Multa - 507594 views',)
  ('Rudolf von Treppenwitz - 423457 views',)
  ('Anonymous Contributor - 170098 views',)
  ('Markoff Chaney - 84557 views',)
  
- Requests:
+Days where over 1% of requests have failed:
  ('July, 17 2016 - 2.3% errors',)
