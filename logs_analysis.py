@@ -53,7 +53,7 @@ def query_three():
             ON success_requests.date = failed_requests.date
         WHERE (failed_requests.err * 100) > success_requests.ok""")
     rows = cur.fetchall()
-    print("\nDays With > 1% Failed Requests:")
+    print("\nDays With > 1% Request Errors:")
     for row in rows:
         print(row)
 
