@@ -2,11 +2,11 @@
 
 import psycopg2
 
+conn = psycopg2.connect(database="news")
+cur = conn.cursor()
 
 def query_one():
     """Return top three accessed articles from the database."""
-    conn = psycopg2.connect(database="news")
-    cur = conn.cursor()
     cur.execute("""
         SELECT
             CONCAT(initcap(articles.title), ' - ', count(*), ' views')
@@ -22,14 +22,11 @@ def query_one():
     for row in rows:
         text_file.write('\n {}'.format(row))
     text_file.close()
-    cur.close()
-    conn.close()
+
 
 
 def query_two():
     """Return most popular article authors."""
-    conn = psycopg2.connect(database="news")
-    cur = conn.cursor()
     cur.execute("""
         SELECT
             CONCAT(authors.name, ' - ', SUM(most_accessed.count), ' views')
@@ -44,14 +41,11 @@ def query_two():
     for row in rows:
         text_file.write('\n {}'.format(row))
     text_file.close()
-    cur.close()
-    conn.close()
+
 
 
 def query_three():
     """Return days where more than 1% of requests lead to errors."""
-    conn = psycopg2.connect(database="news")
-    cur = conn.cursor()
     cur.execute("""
         SELECT
             CONCAT(
@@ -66,15 +60,16 @@ def query_three():
         WHERE (failed_requests.err * 100) > success_requests.ok""")
     rows = cur.fetchall()
     text_file = open('query_results.txt', 'a')
-    text_file.write('\n \nDays where over 1% of requests have failed:')
+    text_file.write('\n \nDays where over 1% of requests failed:')
     for row in rows:
         text_file.write('\n {}'.format(row))
     text_file.close()
-    cur.close()
-    conn.close()
+
 
 
 if __name__ == '__main__':
     query_one()
     query_two()
     query_three()
+    cur.close()
+    conn.close()
