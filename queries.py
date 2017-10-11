@@ -40,7 +40,7 @@ def query_two():
         ORDER BY SUM(most_accessed.count) DESC")
     rows = cur.fetchall()
     text_file = open('query_results.txt', 'a')
-    text_file.write('Most Popular Article Authors:')
+    text_file.write('\n \n Most Popular Article Authors:')
     for row in rows:
         text_file.write('\n {}'.format(row))
     text_file.close()
@@ -66,7 +66,7 @@ def query_three():
         WHERE (failed_requests.err * 100) > success_requests.ok")
     rows = cur.fetchall()
     text_file = open('query_results.txt', 'a')
-    text_file.write('Requests:')
+    text_file.write('\n \n Requests:')
     for row in rows:
         text_file.write('\n {}'.format(row))
     text_file.close()
@@ -74,7 +74,7 @@ def query_three():
     conn.close()
 
 
-
-query_one()
-query_two()
-query_three()
+if __name__ == '__main__':
+    query_one()
+    query_two()
+    query_three()
