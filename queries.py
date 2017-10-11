@@ -13,7 +13,7 @@ def select(select_query):
     return
 
 
-def query_one():
+def articles_query():
     """Return top three accessed articles from the database."""
     cur.execute("""
         SELECT
@@ -79,6 +79,6 @@ def query_three():
 
 
 if __name__ == '__main__':
-    query_one()
+    articles_query()
     query_two()
     query_three()
