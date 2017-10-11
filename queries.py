@@ -54,7 +54,7 @@ def authors_query():
     conn.close()
 
 
-def query_three():
+def errors_query():
     """Return days where more than 1% of requests lead to errors."""
     cur.execute("""
         SELECT
@@ -81,4 +81,4 @@ def query_three():
 if __name__ == '__main__':
     articles_query()
     authors_query()
-    query_three()
+    errors_query()
