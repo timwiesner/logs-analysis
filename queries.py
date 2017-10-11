@@ -13,7 +13,7 @@ def select(select_query):
     return
 
 
-def query_one():
+def articles_query():
     """Return top three accessed articles from the database."""
     cur.execute("""
         SELECT
@@ -34,7 +34,7 @@ def query_one():
     conn.close()
 
 
-def query_two():
+def authors_query():
     """Return most popular article authors."""
     cur.execute("""
         SELECT
@@ -54,7 +54,7 @@ def query_two():
     conn.close()
 
 
-def query_three():
+def errors_query():
     """Return days where more than 1% of requests lead to errors."""
     cur.execute("""
         SELECT
@@ -79,6 +79,6 @@ def query_three():
 
 
 if __name__ == '__main__':
-    query_one()
-    query_two()
-    query_three()
+    articles_query()
+    authors_query()
+    errors_query()
