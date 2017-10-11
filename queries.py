@@ -3,18 +3,10 @@
 import psycopg2
 
 
-
-def select(select_query):
+def query_one():
+    """Return top three accessed articles from the database."""
     conn = psycopg2.connect(database="news")
     cur = conn.cursor()
-    cur.execute(select_query)
-    rows = cur.fetchall()
-    conn.close()
-    return
-
-
-def articles_query():
-    """Return top three accessed articles from the database."""
     cur.execute("""
         SELECT
             CONCAT(initcap(articles.title), ' - ', count(*), ' views')
@@ -34,8 +26,10 @@ def articles_query():
     conn.close()
 
 
-def authors_query():
+def query_two():
     """Return most popular article authors."""
+    conn = psycopg2.connect(database="news")
+    cur = conn.cursor()
     cur.execute("""
         SELECT
             CONCAT(authors.name, ' - ', SUM(most_accessed.count), ' views')
@@ -54,8 +48,10 @@ def authors_query():
     conn.close()
 
 
-def errors_query():
+def query_three():
     """Return days where more than 1% of requests lead to errors."""
+    conn = psycopg2.connect(database="news")
+    cur = conn.cursor()
     cur.execute("""
         SELECT
             CONCAT(
@@ -79,6 +75,6 @@ def errors_query():
 
 
 if __name__ == '__main__':
-    articles_query()
-    authors_query()
-    errors_query()
+    query_one()
+    query_two()
+    query_three()
