@@ -17,7 +17,7 @@ def query_one():
         ORDER BY log.count DESC
         LIMIT 3""")
     rows = cur.fetchall()
-    print("\nMost popular articles:")
+    print("\nMost Popular Articles:")
     for row in rows:
         print(row)
 
@@ -33,7 +33,7 @@ def query_two():
         GROUP BY authors.name
         ORDER BY SUM(most_accessed.count) DESC""")
     rows = cur.fetchall()
-    print("\nMost popular authors:")
+    print("\nMost Popular Authors:")
     for row in rows:
         print(row)
 
