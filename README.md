@@ -28,7 +28,7 @@ To run the Vagrant VM and load the news databse, `cd` into the `vagrant` directo
 * `cd /vagrant`
 * `psql -d news -f newsdata.sql`
 
-### Create Views
+### Create Database Views
 To successfully execute these queries, create (copy and paste) the following views in your PSQL terminal:
 
 `CREATE VIEW failed_requests AS
