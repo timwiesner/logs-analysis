@@ -1,11 +1,21 @@
 #!/usr/bin/env python3
 
 import psycopg2
+import re
+
+
 
 conn = psycopg2.connect(database="news")
 cur = conn.cursor()
 
-def query_one():
+
+def print_rows(rows):
+    for row in rows:
+        print(row)
+        # print('{} -- {}'.format(row[0], row[1]))
+
+
+def articles_query():
     """Return top three accessed articles from the database."""
     cur.execute("""
         SELECT
@@ -15,11 +25,10 @@ def query_one():
             ON substring(path, 10) = articles.slug
         GROUP BY articles.title
         ORDER BY log.count DESC
-        LIMIT 3""")
+        LIMIT 3;""")
     rows = cur.fetchall()
     print("\nMost Popular Articles:")
-    for row in rows:
-        print(row)
+    print_rows(rows)
 
 
 def query_two():
@@ -34,8 +43,7 @@ def query_two():
         ORDER BY SUM(most_accessed.count) DESC""")
     rows = cur.fetchall()
     print("\nMost Popular Authors:")
-    for row in rows:
-        print(row)
+    print_rows(rows)
 
 
 def query_three():
@@ -54,13 +62,12 @@ def query_three():
         WHERE (failed_requests.err * 100) > success_requests.ok""")
     rows = cur.fetchall()
     print("\nDays With > 1% Request Errors:")
-    for row in rows:
-        print(row)
+    print_rows(rows)
 
 
 if __name__ == '__main__':
-    query_one()
-    query_two()
-    query_three()
+    articles_query()
+    # query_two()
+    # query_three()
     cur.close()
     conn.close()
