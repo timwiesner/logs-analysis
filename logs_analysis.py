@@ -11,7 +11,6 @@ cur = conn.cursor()
 
 def print_rows(rows):
     for row in rows:
-        # print(row)
         print('{} - {}'.format(row[0], row[1]))
 
 
