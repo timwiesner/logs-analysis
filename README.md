@@ -29,7 +29,7 @@ To run the Vagrant VM and load the news databse, `cd` into the `vagrant` directo
 * `psql -d news -f newsdata.sql`
 
 ### Create Views
-To successfully execute these queries, the following views must be created in the PSQL terminal:
+To successfully execute these queries, create (copy and paste) the following views in your PSQL terminal:
 
 `CREATE VIEW failed_requests AS
 SELECT
@@ -48,6 +48,7 @@ ORDER BY date;`
   WHERE status like '200 OK'
   GROUP BY date
   ORDER BY date;`
+
 
 <!-- psql — the PostgreSQL command line program
 -d news — connect to the database named news which has been set up for you
