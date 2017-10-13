@@ -31,7 +31,7 @@ def articles_query():
     print_rows(rows)
 
 
-def query_two():
+def authors_query():
     """Return most popular article authors."""
     cur.execute("""
         SELECT
@@ -67,7 +67,7 @@ def query_three():
 
 if __name__ == '__main__':
     articles_query()
-    # query_two()
-    # query_three()
+    authors_query()
+    query_three()
     cur.close()
     conn.close()
