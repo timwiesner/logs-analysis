@@ -11,7 +11,7 @@ This project uses Python with psycopg2 as a PostgreSQL adapter to run queries ag
 ### Installation Prerequisites
 To run these queries, the following programs must be installed:
 * Python3: https://www.python.org/downloads/
-* Virtual: Box https://www.virtualbox.org/wiki/Downloads
+* Virtual Box: https://www.virtualbox.org/wiki/Downloads
 * Vagrant: https://www.vagrantup.com/downloads.html
 
 ### Virtual Machine Configuration
