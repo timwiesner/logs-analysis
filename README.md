@@ -38,7 +38,7 @@ SELECT
 FROM log
 WHERE status like '404 NOT FOUND'
 GROUP BY date
-ORDER BY date`
+ORDER BY date;`
 
 `CREATE VIEW success_requests AS
   SELECT
@@ -47,7 +47,7 @@ ORDER BY date`
   FROM log
   WHERE status like '200 OK'
   GROUP BY date
-  ORDER BY date`
+  ORDER BY date;`
 
 <!-- psql — the PostgreSQL command line program
 -d news — connect to the database named news which has been set up for you
