@@ -34,7 +34,9 @@ def articles_query():
 def authors_query():
     """Return most popular article authors."""
     cur.execute("""
-        SELECT authors.name, SUM(most_accessed.count)
+        SELECT
+            authors.name,
+            CONCAT(SUM(most_accessed.count), ' views') AS views
         FROM authors, (
             SELECT articles.author, count(*)
             FROM log
@@ -44,7 +46,7 @@ def authors_query():
             ) AS most_accessed
         WHERE authors.id = most_accessed.author
         GROUP BY authors.name
-        ORDER BY SUM(most_accessed.count) DESC;""")
+        ORDER BY views DESC;""")
     rows = cur.fetchall()
     print("\nMost Popular Authors:")
     print_rows(rows)
