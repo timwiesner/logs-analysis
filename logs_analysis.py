@@ -52,12 +52,10 @@ def errors_query():
     """Return days where more than 1% of requests lead to errors."""
     cur.execute("""
         SELECT
-            CONCAT(
-            success_requests.date, ' - ',
-            round(CAST
+            success_requests.date,
+            CONCAT(round(CAST
                 (failed_requests.err / success_requests.ok::float * 100
-                AS numeric), 1),
-                '% errors')
+                AS numeric), 1), '% errors')
         FROM success_requests
         JOIN failed_requests
             ON success_requests.date = failed_requests.date
@@ -70,6 +68,6 @@ def errors_query():
 if __name__ == '__main__':
     articles_query()
     authors_query()
-    # errors_query()
+    errors_query()
     cur.close()
     conn.close()
