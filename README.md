@@ -30,6 +30,7 @@ To run the Vagrant VM and load the news databse, `cd` into the `vagrant` directo
 
 ### Create Views
 To successfully execute these queries, the following views must be created in the PSQL terminal:
+
 `CREATE VIEW failed_requests AS
 SELECT
   to_char(time, 'FMMonth, DD YYYY') AS date,
