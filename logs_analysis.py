@@ -11,15 +11,16 @@ cur = conn.cursor()
 
 def print_rows(rows):
     for row in rows:
-        print(row)
-        # print('{} -- {}'.format(row[0], row[1]))
+        # print(row)
+        print('{} - {}'.format(row[0], row[1]))
 
 
 def articles_query():
     """Return top three accessed articles from the database."""
     cur.execute("""
         SELECT
-            CONCAT(initcap(articles.title), ' - ', count(*), ' views')
+            initcap(articles.title),
+            CONCAT(count(*), ' views')
         FROM log
         RIGHT JOIN articles
             ON substring(path, 10) = articles.slug
@@ -67,7 +68,7 @@ def errors_query():
 
 if __name__ == '__main__':
     articles_query()
-    authors_query()
-    errors_query()
+    # authors_query()
+    # errors_query()
     cur.close()
     conn.close()
