@@ -36,7 +36,8 @@ def authors_query():
     """Return most popular article authors."""
     cur.execute("""
         SELECT
-            CONCAT(authors.name, ' - ', SUM(most_accessed.count), ' views')
+            authors.name,
+            CONCAT(SUM(most_accessed.count), ' views')
         FROM most_accessed
         JOIN authors
             ON most_accessed.author = authors.id
@@ -68,7 +69,7 @@ def errors_query():
 
 if __name__ == '__main__':
     articles_query()
-    # authors_query()
+    authors_query()
     # errors_query()
     cur.close()
     conn.close()
