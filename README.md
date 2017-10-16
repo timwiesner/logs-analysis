@@ -19,7 +19,10 @@ To run these queries, the following programs must be installed:
 
 ### Download Data
 1. Download and unzip [newsdata.zip](https://d17h27t6h515a5.cloudfront.net/topher/2016/August/57b5f748_newsdata/newsdata.zip).
-2. Place `newsdata.sql` inside the `vagrant` directory. This directory can be found in the virtual machine installed in the previous step.
+2. Place `newsdata.sql` inside `FSND-Virtual-Machine/vagrant`. This directory can be found in the virtual machine installed in the previous step.
+
+### Clone Repository
+* Download/clone this repo and place the resulting `news-data-master` folder inside `FSND-Virtual-Machine/vagrant` as well.
 
 ### Start Virtual Machine and Load Data
 To run the Vagrant VM and load the news databse, `cd` into the `vagrant` directory and enter the following commands into your terminal:
@@ -29,7 +32,7 @@ To run the Vagrant VM and load the news databse, `cd` into the `vagrant` directo
 * `psql -d news -f newsdata.sql`
 
 ### Create Database Views
-To successfully execute these queries, create (copy and paste) the following views in your PSQL terminal:
+Copy and paste the following views in your PSQL terminal:
 
 `CREATE VIEW failed_requests AS
 SELECT
@@ -41,16 +44,16 @@ GROUP BY date
 ORDER BY date;`
 
 `CREATE VIEW success_requests AS
-  SELECT
-    to_char(time, 'FMMonth, DD YYYY') AS date,
-    COUNT(*) as ok
-  FROM log
-  WHERE status like '200 OK'
-  GROUP BY date
-  ORDER BY date;`
+SELECT
+  to_char(time, 'FMMonth, DD YYYY') AS date,
+  COUNT(*) as ok
+FROM log
+WHERE status like '200 OK'
+GROUP BY date
+ORDER BY date;`
 
+After creating these required views, type `\q` to exit the database.
 
-<!-- psql — the PostgreSQL command line program
--d news — connect to the database named news which has been set up for you
--f newsdata.sql — run the SQL statements in the file newsdata.sql
-Running this command will connect to your installed database server and execute the SQL commands in the downloaded file, creating tables and populating them with data. -->
+### Run Queries
+* Run the command `python3 news-data-master/logs_analysis.py` while still in the `/vagrant` directory.
+* The output in your terminal should match included `example_output.txt` file.
