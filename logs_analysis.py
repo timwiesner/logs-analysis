@@ -67,7 +67,7 @@ def errors_query():
         FROM success_requests
         JOIN failed_requests
             ON success_requests.date = failed_requests.date
-        WHERE (failed_requests.err * 100) > success_requests.ok"""
+        WHERE (failed_requests.err * 100) > success_requests.ok;"""
     rows = retrieve(errors)
     print("\nDays With > 1% Request Errors:")
     print_rows(rows)
