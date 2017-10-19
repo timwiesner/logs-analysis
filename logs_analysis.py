@@ -28,7 +28,7 @@ def articles_query():
             CONCAT(count(*), ' views')
         FROM log
         RIGHT JOIN articles
-            ON substring(path, 10) = articles.slug
+            ON '/article/' || articles.slug = log.path
         GROUP BY articles.title
         ORDER BY log.count DESC
         LIMIT 3;"""
