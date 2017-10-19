@@ -30,6 +30,7 @@ To run the Vagrant VM and load the news databse, `cd` into the `FSND-Virtual-Mac
 * `vagrant ssh`
 * `cd /vagrant`
 * `psql -d news -f newsdata.sql`
+* `psql -d news`
 
 ### Create Database Views
 Copy and paste the following views in your PSQL terminal:
