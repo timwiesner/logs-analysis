@@ -25,8 +25,8 @@ To run these queries, the following programs must be installed:
 * Download/clone this repo and place the resulting `news-data-master` folder inside `FSND-Virtual-Machine/vagrant` as well.
 
 ### Start Virtual Machine and Load Data
-To run the Vagrant VM and load the news databse, `cd` into the `vagrant` directory and enter the following commands into your terminal:
-* `vagrant up`
+To run the Vagrant VM and load the news databse, `cd` into the `FSND-Virtual-Machine/vagrant` directory and enter the following commands into your terminal:
+* `vagrant up` - This may take a few minutes, especially the first time
 * `vagrant ssh`
 * `cd /vagrant`
 * `psql -d news -f newsdata.sql`
@@ -52,7 +52,7 @@ WHERE status like '200 OK'
 GROUP BY date
 ORDER BY date;`
 
-After creating these required views, type `\q` to exit the database.
+After creating these required views, type `\q` or hold `Ctrl+Q` to exit the database.
 
 ### Run Queries
 * Run the command `python3 news-data-master/logs_analysis.py` while still in the `/vagrant` directory.
