@@ -5,7 +5,7 @@ import psycopg2
 
 def retrieve(query):
     """Connect to database then execute query."""
-    conn = psycopg2.connect(database="news")
+    conn = psycopg2.connect(database='news')
     cur = conn.cursor()
     cur.execute(query)
     rows = cur.fetchall()
@@ -17,7 +17,7 @@ def retrieve(query):
 def print_rows(rows):
     """Print query retrieved from database."""
     for row in rows:
-        print(" {} - {}".format(row[0], row[1]))
+        print(' {} - {}'.format(row[0], row[1]))
 
 
 def articles_query():
@@ -33,7 +33,7 @@ def articles_query():
         ORDER BY log.count DESC
         LIMIT 3;"""
     rows = retrieve(articles)
-    print("\nMost Popular Articles:")
+    print('\nMost Popular Articles:')
     print_rows(rows)
 
 
@@ -54,7 +54,7 @@ def authors_query():
         GROUP BY authors.name
         ORDER BY SUM(most_accessed.count) DESC;"""
     rows = retrieve(authors)
-    print("\nMost Popular Authors:")
+    print('\nMost Popular Authors:')
     print_rows(rows)
 
 
@@ -71,7 +71,7 @@ def errors_query():
             ON success_requests.date = failed_requests.date
         WHERE (failed_requests.err * 100) > success_requests.ok;"""
     rows = retrieve(errors)
-    print("\nDays With > 1% Request Errors:")
+    print('\nDays With > 1% Request Errors:')
     print_rows(rows)
 
 
