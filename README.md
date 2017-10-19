@@ -22,7 +22,7 @@ To run these queries, the following programs must be installed:
 2. Place `newsdata.sql` inside `FSND-Virtual-Machine/vagrant`. This directory can be found in the virtual machine installed in the previous step.
 
 ### Clone Repository
-* Download/clone this repo and place the resulting `news-data-master` folder inside `FSND-Virtual-Machine/vagrant` as well.
+* Download/clone this repo and place the resulting `logs-analysis-master` folder inside `FSND-Virtual-Machine/vagrant` as well.
 
 ### Start Virtual Machine and Load Data
 To run the Vagrant VM and load the news databse, `cd` into the `FSND-Virtual-Machine/vagrant` directory and enter the following commands into your terminal:
