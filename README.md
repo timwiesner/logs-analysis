@@ -3,14 +3,14 @@
 ## Logs Analysis Project
 
 ### Project Overview
-This project uses Python with psycopg2 as a PostgreSQL adapter to run queries against a fictional news website database. These queries answer:
+This project uses Python 3 with psycopg2 as a PostgreSQL adapter to run queries against a fictional news website database. These queries answer:
 1. What are the most popular three articles of all time?
 2. Who are the most popular article authors of all time?
 3. On which days did more than 1% of requests lead to errors?
 
 ### Installation Prerequisites
 To run these queries, the following programs must be installed:
-* Python3: https://www.python.org/downloads/
+* Python 3: https://www.python.org/downloads/
 * Virtual Box: https://www.virtualbox.org/wiki/Downloads
 * Vagrant: https://www.vagrantup.com/downloads.html
 
