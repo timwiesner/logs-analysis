@@ -4,6 +4,7 @@ import psycopg2
 
 
 def retrieve(query):
+    """Connect to database then execute query."""
     conn = psycopg2.connect(database="news")
     cur = conn.cursor()
     cur.execute(query)
@@ -14,6 +15,7 @@ def retrieve(query):
 
 
 def print_rows(rows):
+    """Print query retrieved from database."""
     for row in rows:
         print('{} - {}'.format(row[0], row[1]))
 
