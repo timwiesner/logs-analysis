@@ -56,5 +56,5 @@ ORDER BY date;`
 After creating these required views, type `\q` or hold `Ctrl+D` to exit the database.
 
 ### Run Queries
-* Run the command `python3 news-data-master/logs_analysis.py` while still in the `/vagrant` directory.
+* Run the command `python3 logs-analysis-master/logs_analysis.py`.
 * The output in your terminal should match included `example_output.txt` file.
