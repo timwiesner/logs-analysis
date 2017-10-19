@@ -52,7 +52,7 @@ def authors_query():
             ) AS most_accessed
         WHERE authors.id = most_accessed.author
         GROUP BY authors.name
-        ORDER BY views DESC;"""
+        ORDER BY SUM(most_accessed.count) DESC;"""
     rows = retrieve(authors)
     print("\nMost Popular Authors:")
     print_rows(rows)
