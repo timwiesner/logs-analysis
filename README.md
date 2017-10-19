@@ -53,7 +53,7 @@ WHERE status like '200 OK'
 GROUP BY date
 ORDER BY date;`
 
-After creating these required views, type `\q` or hold `Ctrl+Q` to exit the database.
+After creating these required views, type `\q` or hold `Ctrl+D` to exit the database.
 
 ### Run Queries
 * Run the command `python3 news-data-master/logs_analysis.py` while still in the `/vagrant` directory.
