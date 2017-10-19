@@ -26,7 +26,7 @@ To run these queries, the following programs must be installed:
 
 ### Start Virtual Machine and Load Data
 To run the Vagrant VM and load the news databse, `cd` into the `FSND-Virtual-Machine/vagrant` directory and enter the following commands into your terminal:
-* `vagrant up` - This may take a few minutes, especially the first time
+* `vagrant up` - This may take a few minutes, especially the first time.
 * `vagrant ssh`
 * `cd /vagrant`
 * `psql -d news -f newsdata.sql`
