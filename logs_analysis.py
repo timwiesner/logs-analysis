@@ -17,7 +17,7 @@ def retrieve(query):
 def print_rows(rows):
     """Print query retrieved from database."""
     for row in rows:
-        print('{} - {}'.format(row[0], row[1]))
+        print(' {} - {}'.format(row[0], row[1]))
 
 
 def articles_query():
