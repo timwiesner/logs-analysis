@@ -4,7 +4,7 @@ import psycopg2
 
 
 def retrieve(query):
-    """1. Connect to database then execute query. Returns rows."""
+    """1. Connect to database then execute query. Returns rows from db."""
     try:
         conn = psycopg2.connect(database='news')
         cur = conn.cursor()
