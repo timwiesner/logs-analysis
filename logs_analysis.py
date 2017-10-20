@@ -5,13 +5,16 @@ import psycopg2
 
 def retrieve(query):
     """1. Connect to database then execute query. Returns rows."""
-    conn = psycopg2.connect(database='news')
-    cur = conn.cursor()
-    cur.execute(query)
-    rows = cur.fetchall()
-    cur.close()
-    conn.close()
-    return rows
+    try:
+        conn = psycopg2.connect(database='news')
+        cur = conn.cursor()
+        cur.execute(query)
+        rows = cur.fetchall()
+        cur.close()
+        conn.close()
+        return rows
+    except:
+        print('Error: database not found.')
 
 
 def print_rows(rows):
