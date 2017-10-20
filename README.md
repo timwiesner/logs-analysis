@@ -15,7 +15,7 @@ To run these queries, the following programs must be installed:
 * Vagrant: https://www.vagrantup.com/downloads.html
 
 ### Virtual Machine Configuration
-* Download and unzip [Udacity's Vagrant Configuration File](https://d17h27t6h515a5.cloudfront.net/topher/2017/August/59822701_fsnd-virtual-machine/fsnd-virtual-machine.zip).
+* Download and unzip [Udacity's Vagrant Configuration File](https://github.com/udacity/fullstack-nanodegree-vm/blob/master/vagrant/Vagrantfile).
 
 ### Download Data
 1. Download and unzip [newsdata.zip](https://d17h27t6h515a5.cloudfront.net/topher/2016/August/57b5f748_newsdata/newsdata.zip).
@@ -29,8 +29,8 @@ To run the Vagrant VM and load the news databse, `cd` into the `FSND-Virtual-Mac
 * `vagrant up` - This may take a few minutes, especially the first time.
 * `vagrant ssh`
 * `cd /vagrant`
-* `psql -d news -f newsdata.sql`
-* `psql -d news`
+* Import the data and schema from `newsdata.sql` to the _news_ database by typing `psql -d news -f newsdata.sql`
+* `psql news`
 
 ### Create Database Views
 Copy and paste the following views in your PSQL terminal:
