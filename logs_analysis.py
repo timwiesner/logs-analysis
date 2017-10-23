@@ -69,8 +69,8 @@ def errors_query():
     errors = """
         SELECT * FROM(
             SELECT time::date AS date,
-            100 * (COUNT(*) FILTER (WHERE status = '404 NOT FOUND') /
-                COUNT(*)::numeric) AS error_percent
+            round(100 * (COUNT(*) FILTER (WHERE status = '404 NOT FOUND') /
+                COUNT(*)::numeric), 2) AS error_percent
             FROM log
             GROUP BY time::date
         ) a
