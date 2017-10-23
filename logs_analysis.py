@@ -29,7 +29,11 @@ def articles_query():
         SELECT
             initcap(articles.title),
             CONCAT(count(*), ' views')
-        FROM log
+        FROM (
+            SELECT path, count(*) AS views
+            FROM log
+            GROUP BY log.path
+            ) AS log
         RIGHT JOIN articles
             ON '/article/' || articles.slug = log.path
         GROUP BY articles.title
@@ -80,5 +84,5 @@ def errors_query():
 
 if __name__ == '__main__':
     articles_query()
-    authors_query()
-    errors_query()
+    # authors_query()
+    # errors_query()
