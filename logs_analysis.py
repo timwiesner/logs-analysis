@@ -28,7 +28,7 @@ def articles_query():
     articles = """
         SELECT
             initcap(articles.title),
-            CONCAT(count(*), ' views')
+            CONCAT(views, ' views')
         FROM (
             SELECT path, count(*) AS views
             FROM log
@@ -36,8 +36,7 @@ def articles_query():
             ) AS log
         RIGHT JOIN articles
             ON '/article/' || articles.slug = log.path
-        GROUP BY articles.title
-        ORDER BY log.count DESC
+        ORDER BY views DESC
         LIMIT 3;"""
     rows = retrieve(articles)
     print('\nMost Popular Articles:')
@@ -54,7 +53,7 @@ def authors_query():
             SELECT articles.author, count(*)
             FROM log
             RIGHT JOIN articles
-                ON substring(path, 10) = articles.slug
+                ON '/article/' || articles.slug = log.path
             GROUP BY articles.author
             ) AS most_accessed
         WHERE authors.id = most_accessed.author
@@ -84,5 +83,5 @@ def errors_query():
 
 if __name__ == '__main__':
     articles_query()
-    # authors_query()
-    # errors_query()
+    authors_query()
+    errors_query()
