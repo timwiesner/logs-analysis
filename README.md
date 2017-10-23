@@ -26,34 +26,10 @@ To run these queries, the following programs must be installed:
 
 ### Start Virtual Machine and Load Data
 To run the Vagrant VM and load the news databse, `cd` into the `FSND-Virtual-Machine/vagrant` directory and enter the following commands into your terminal:
-* `vagrant up` - This may take a few minutes, especially the first time.
-* `vagrant ssh`
+* `vagrant up` starts the virtual machine. This may take a few minutes, especially the first time.
+* `vagrant ssh` to log into the VM.
 * `cd /vagrant`
 * Import the data and schema from `newsdata.sql` to the _news_ database by typing `psql -d news -f newsdata.sql`
-* `psql news`
-
-### Create Database Views
-Copy and paste the following views in your PSQL terminal:
-
-`CREATE VIEW failed_requests AS
-SELECT
-  to_char(time, 'FMMonth, DD YYYY') AS date,
-  COUNT(*) as err
-FROM log
-WHERE status like '404 NOT FOUND'
-GROUP BY date
-ORDER BY date;`
-
-`CREATE VIEW success_requests AS
-SELECT
-  to_char(time, 'FMMonth, DD YYYY') AS date,
-  COUNT(*) as ok
-FROM log
-WHERE status like '200 OK'
-GROUP BY date
-ORDER BY date;`
-
-After creating these required views, type `\q` or hold `Ctrl+D` to exit the database.
 
 ### Run Queries
 * Run the command `python3 logs-analysis-master/logs_analysis.py`.
