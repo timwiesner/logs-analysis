@@ -67,15 +67,14 @@ def authors_query():
 def errors_query():
     """Return days where more than 1% of requests lead to errors."""
     errors = """
-        SELECT
-            success_requests.date,
-            CONCAT(round(CAST
-                (failed_requests.err / success_requests.ok::float * 100
-                AS numeric), 1), '% errors')
-        FROM success_requests
-        JOIN failed_requests
-            ON success_requests.date = failed_requests.date
-        WHERE (failed_requests.err * 100) > success_requests.ok;"""
+        SELECT * FROM(
+            SELECT time::date AS date,
+            100 * (COUNT(*) FILTER (WHERE status = '404 NOT FOUND') /
+                COUNT(*)::numeric) AS error_percent
+            FROM log
+            GROUP BY time::date
+        ) a
+        WHERE error_percent > 1;"""
     rows = retrieve(errors)
     print('\nDays With > 1% Request Errors:')
     print_rows(rows)
